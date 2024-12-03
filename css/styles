@@ -1,0 +1,68 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
+  
+  header, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 0, 0, 0.8); /* Darker background for readability */
+    color: white;
+    padding: 20px;
+  }
+  
+  footer {
+    margin-top: 30px;
+  }
+  
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+  }
+  
+  section {
+    background-color: rgba(248, 248, 248, 0.8); /* Semi-transparent background for sections */
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  h2, h3 {
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #800000;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #a02b2b;
+  }
+  
+  input {
+    margin: 5px 0;
+    padding: 5px;
+  }
+  
+  #total-position {
+    margin-top: 20px;
+    text-align: center;
+  }
+  

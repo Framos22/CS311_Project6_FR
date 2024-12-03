@@ -1,0 +1,89 @@
+// Select necessary DOM elements
+const addCurrentAssetsBtn = document.getElementById('add-current-assets');
+const addInvestmentPropertyBtn = document.getElementById('add-investment-property');
+const addIntangiblesBtn = document.getElementById('add-intangibles');
+const addCurrentLiabilitiesBtn = document.getElementById('add-current-liabilities');
+const addLongTermLiabilitiesBtn = document.getElementById('add-long-term-liabilities');
+const calculatePositionBtn = document.getElementById('calculate-position');
+
+const currentAssetsContainer = document.getElementById('current-assets-container');
+const investmentPropertyContainer = document.getElementById('investment-property-container');
+const intangiblesContainer = document.getElementById('intangibles-container');
+const currentLiabilitiesContainer = document.getElementById('current-liabilities-container');
+const longTermLiabilitiesContainer = document.getElementById('long-term-liabilities-container');
+
+// Function to create input fields dynamically
+function createInputField(labelText) {
+  const div = document.createElement('div');
+  const label = document.createElement('label');
+  const input = document.createElement('input');
+  
+  label.textContent = labelText;
+  div.appendChild(label);
+  div.appendChild(input);
+
+  return div;
+}
+
+// Adding Current Assets fields dynamically
+addCurrentAssetsBtn.addEventListener('click', () => {
+  const fields = ['Cash', 'Inventory', 'Supplies', 'Temporary Investments'];
+  fields.forEach(field => {
+    currentAssetsContainer.appendChild(createInputField(field));
+  });
+});
+
+// Adding Investment Property fields dynamically
+addInvestmentPropertyBtn.addEventListener('click', () => {
+  const fields = ['Land', 'Buildings and Improvements', 'Equipment', 'Temporary Investments'];
+  fields.forEach(field => {
+    investmentPropertyContainer.appendChild(createInputField(field));
+  });
+});
+
+// Adding Intangibles fields dynamically
+addIntangiblesBtn.addEventListener('click', () => {
+  const fields = ['Trade Names', 'Goodwill'];
+  fields.forEach(field => {
+    intangiblesContainer.appendChild(createInputField(field));
+  });
+});
+
+// Adding Current Liabilities fields dynamically
+addCurrentLiabilitiesBtn.addEventListener('click', () => {
+  const fields = ['Accounts Payable', 'Notes Payable', 'Interest Payable', 'Wages Payable', 'Accrued Expenses'];
+  fields.forEach(field => {
+    currentLiabilitiesContainer.appendChild(createInputField(field));
+  });
+});
+
+// Adding Long-Term Liabilities fields dynamically
+addLongTermLiabilitiesBtn.addEventListener('click', () => {
+  const fields = ['Notes Payable', 'Bonds Payable'];
+  fields.forEach(field => {
+    longTermLiabilitiesContainer.appendChild(createInputField(field));
+  });
+});
+
+// Calculate Position functionality
+calculatePositionBtn.addEventListener('click', () => {
+  const allInputs = document.querySelectorAll('input');
+  let totalAssets = 0;
+  let totalLiabilities = 0;
+
+  allInputs.forEach(input => {
+    const value = parseFloat(input.value) || 0;
+    if (input.closest('section').id === 'assets') {
+      totalAssets += value;
+    } else if (input.closest('section').id === 'liabilities') {
+      totalLiabilities += value;
+    }
+  });
+
+  const position = totalAssets - totalLiabilities;
+
+  // Update the Total Position
+  document.getElementById('total-assets').textContent = totalAssets.toFixed(2);
+  document.getElementById('total-liabilities').textContent = totalLiabilities.toFixed(2);
+  document.getElementById('position').textContent = position.toFixed(2);
+});
